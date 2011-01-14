@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import ast.Readable;
 
+/**
+ * Note that the refactoring will add an extra import above this comment
+ * @author julian
+ *
+ */
 public class Readable {
 
 	/**

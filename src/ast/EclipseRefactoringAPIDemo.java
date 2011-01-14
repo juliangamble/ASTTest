@@ -12,24 +12,27 @@ import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
 import org.eclipse.jdt.core.dom.BodyDeclaration;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.ImportDeclaration;
-import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-//import org.eclipse.jdt.internal.core.ImportDeclaration;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 
 import org.eclipse.text.edits.MalformedTreeException;
 import org.eclipse.text.edits.TextEdit;
 
-public class Tester {
+/**
+ * Eclipse refactoring demo -  programmatically adds imports to other file
+ * @author julian
+ *
+ */
+public class EclipseRefactoringAPIDemo {
 
 	/**
 	 * @param args
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws Exception {
-		Tester test = new Tester();
-		test.processJavaFile(new File("C:/Users/julian/workspace_antlr/ASTTest/src/ast/Readable.java"));
+		EclipseRefactoringAPIDemo test = new EclipseRefactoringAPIDemo();
+		test.processJavaFile(new File("./src/ast/Readable.java"));
 	}
 
 	
@@ -50,12 +53,7 @@ public class Tester {
 	    // to create a new import
 	    AST ast = unit.getAST();
 	    ImportDeclaration id = ast.newImportDeclaration();
-	    String classToImport = "ast.Readable";//"path.to.some.class";
-	    
-//	    String[] name = classToImport.split("\\.");
-//	    Name astName = ast.newName(name);
-//	    id.setName(astName);
-	    
+	    String classToImport = "ast.Readable";
 	    
 	    id.setName(ast.newName(classToImport.split("\\.")));
 	    unit.imports().add(id); // add import declaration at end
